@@ -204,7 +204,6 @@ int func7(int x) {
   int tmp3 = tmp2 ^ (tmp2 >> 2);
   int res = tmp3 ^ (tmp3 >> 1);
   return res & 1;
-
 }
 
 
@@ -217,11 +216,7 @@ int func7(int x) {
  *   Rating: 1
  */
 int func8(void) {
-
-
-
-  return 2;
-
+  return 1 << 31;
 }
 
 /*
