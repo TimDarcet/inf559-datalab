@@ -146,7 +146,7 @@ int func2(int x, int y) {
  *  Rating: 1
  */
 int func3(int n) {
-  int tmp = (n >> 1) & 31;
+  int tmp = n >> 1;
   return (1 << 31) >> tmp << !(n & 1) >> tmp;
 }
 
