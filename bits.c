@@ -146,8 +146,8 @@ int func2(int x, int y) {
  *  Rating: 1
  */
 int func3(int n) {
+  printf("test");
   return (~0 << (32 + (~n + 1)));
-
 }
 
 /* 
