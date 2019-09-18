@@ -248,16 +248,7 @@ int func10(int x) {
  *   Rating: 3
  */
 int func11(int x, int y) {
-
-
-
-
-
-
-
-
-  return 2;
-
+  return !(((x & y) | (x ^ y) & ~(x + y)) >> 31);
 }
 
 /* 
