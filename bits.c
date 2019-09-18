@@ -260,11 +260,7 @@ int func11(int x, int y) {
  *   Rating: 3
  */
 int func12(int x) {
-
-
-
-  return 2;
-
+  return !(x >> 31);
 }
 
 /*
