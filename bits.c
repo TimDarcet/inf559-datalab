@@ -228,7 +228,7 @@ int func8(void) {
  *   Rating: 1
  */
 int func9(int x) {
-  return !((x + 1) ^ (~x));
+  return !!(x + 1) & !((x + 1) ^ (~x));
 }
 
 /* 
