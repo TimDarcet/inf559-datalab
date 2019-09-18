@@ -198,8 +198,12 @@ int func6(int x, int n) {
  *   Rating: 4
  */
 int func7(int x) {
-
-  return 2;
+  int tmp0 = x ^ (x >> 16);
+  int tmp1 = tmp0 ^ (tmp0 >> 8);
+  int tmp2 = tmp1 ^ (tmp1 >> 4);
+  int tmp3 = tmp2 ^ (tmp2 >> 2);
+  int res = tmp3 ^ (tmp3 >> 1);
+  return res & 1;
 
 }
 
