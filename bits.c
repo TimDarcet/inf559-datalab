@@ -147,7 +147,7 @@ int func2(int x, int y) {
  */
 int func3(int n) {
   int tmp = (n >> 1) & 31;
-  return (1 << 31) >> tmp << ~(n & 1) >> tmp;
+  return (1 << 31) >> tmp << !(n & 1) >> tmp;
 }
 
 /* 
