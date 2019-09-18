@@ -149,7 +149,7 @@ int func3(int n) {
   // printf("%d ; %d ; %d ; %d ; %d\n", n, ~0, (~n + 1), (32 + (~n + 1)), 0);
   int tmp = (n >> 1) & 31;
   printf("%d", tmp);
-  return ((1 << 31) >> (n >> 1) >> (n & 1)) << 1;
+  return ((1 << 31) >> tmp >> tmp >> (n & 1));
   // return ((~0 << (32 + ~n)) << 1);
 }
 
