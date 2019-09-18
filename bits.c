@@ -275,16 +275,9 @@ int func12(int x) {
  *   Rating: 4
  */
 int func13(int x, int y) {
-
-
-
-
-
-
-
-
-  return 2;
-
+  int s = x + y;
+  int overflow = (~(x ^ y) & ((x + y) ^ x)) >> 31;
+  return overflow & (~(x >> 31) ^ (1 << 31)) + ~overflow & s;
 }
 
 
