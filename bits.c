@@ -169,7 +169,7 @@ int func4(int x) {
  *   Rating: 2
  */
 int func5(int x) {
-  int tmp = (((((55 << 8) + 55) << 8) + 55) << 8) + 55;
+  int tmp = (((((0x55 << 8) + 0x55) << 8) + 0x55) << 8) + 0x55;
   printf("%d\n", tmp);
   return !((~x) & tmp);
 }
