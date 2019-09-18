@@ -169,15 +169,8 @@ int func4(int x) {
  *   Rating: 2
  */
 int func5(int x) {
-
-
-
-
-
-
-
-  return 2;
-
+  int tmp = (((((55 << 8) + 55) << 8) + 55) << 8) + 55;
+  return !((~x) & tmp);
 }
 
 /* 
