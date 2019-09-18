@@ -225,7 +225,8 @@ int func8(void) {
  *   Rating: 1
  */
 int func9(int x) {
-  return !(~x) ^ !((x + 1) ^ (~x));
+  int p = x + 1;
+  return !((p ^ (~x)) | !p);
 }
 
 /* 
