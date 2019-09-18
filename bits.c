@@ -186,7 +186,6 @@ int func6(int x, int n) {
   int tmp0 = (255 << 8) + 255;
   int tmp1 = (tmp0 << 8) + 255;
   int tmp2 = (tmp1 << 7) + 127;
-  printf("%d\n", tmp2);
   int mask = (tmp2 >> n << 1) + 1;
   return (x >> n) & mask;
 }
