@@ -170,7 +170,7 @@ int func4(int x) {
  */
 int func5(int x) {
   int tmp = (((((55 << 8) + 55) << 8) + 55) << 8) + 55;
-  printf("%d", tmp);
+  printf("%d\n", tmp);
   return !((~x) & tmp);
 }
 
