@@ -248,7 +248,8 @@ int func10(int x) {
  *   Rating: 3
  */
 int func11(int x, int y) {
-  return !(((x & y) | (x ^ y) & ~(x + y)) >> 31);
+  // return !(((x & y) | (x ^ y) & ~(x + y)) >> 31);
+  return !((~(x ^ y) & ((x + y) ^ x)) >> 31);
 }
 
 /* 
