@@ -227,14 +227,10 @@ int func8(void) {
  *   Rating: 1
  */
 int func9(int x) {
-
-
-
-
-
-
-  return 2;
-
+  int tmp0 = (255 << 8) + 255;
+  int tmp1 = (tmp0 << 8) + 255;
+  int tmp2 = (tmp1 << 7) + 127;
+  return !(tmp2 ^ x);
 }
 
 /* 
