@@ -134,6 +134,7 @@ int func1(int x) {
  *   Rating: 1
  */
 int func2(int x, int y) {
+  // That is the definition of the ! operator
   return (~x)&(~y);
 }
 
@@ -146,6 +147,8 @@ int func2(int x, int y) {
  *  Rating: 1
  */
 int func3(int n) {
+  /* 1 << 31 >> n is exactly what we need, but since n can be 32
+  and >> 32 is an undefined behavior, we divide n by two using >> 1*/
   int tmp = n >> 1;
   return (1 << 31) >> tmp << !(n & 1) >> tmp;
 }
@@ -158,6 +161,7 @@ int func3(int n) {
  *   Rating: 2
  */
 int func4(int x) {
+  // replace most significant bit with least significant, then use arithmetic shift
   return x << 31 >> 31;
 }
 
@@ -169,6 +173,7 @@ int func4(int x) {
  *   Rating: 2
  */
 int func5(int x) {
+  // Generate a mask with shifts, then test using the mask wether all even-number bits of ~x are set to 0
   int tmp0 = (0x55 << 8) + 0x55;
   int tmp = (tmp0 << 16) + tmp0;
   return !((~x) & tmp);
@@ -183,6 +188,7 @@ int func5(int x) {
  *   Rating: 3 
  */
 int func6(int x, int n) {
+  // create a mask with zeros on the n first bits, then do an arithmetic shift and remove unwanted ones with the mask
   int tmp2 = ~(1 << 31);
   int mask = (tmp2 >> n << 1) + 1;
   return (x >> n) & mask;
@@ -196,6 +202,7 @@ int func6(int x, int n) {
  *   Rating: 4
  */
 int func7(int x) {
+  // Using shifts, progressively xor all bits of x to test for the parity of the number of 0's
   int tmp0 = x ^ (x >> 16);
   int tmp1 = tmp0 ^ (tmp0 >> 8);
   int tmp2 = tmp1 ^ (tmp1 >> 4);
@@ -214,6 +221,7 @@ int func7(int x) {
  *   Rating: 1
  */
 int func8(void) {
+  // The min number has a one for sign then only zeros
   return 1 << 31;
 }
 
@@ -225,6 +233,7 @@ int func8(void) {
  *   Rating: 1
  */
 int func9(int x) {
+  // Test wether x + 1 is the same as ~x, plus rule out the possibility of -1
   int p = x + 1;
   return !((p ^ (~x)) | !p);
 }
@@ -237,6 +246,7 @@ int func9(int x) {
  *   Rating: 2
  */
 int func10(int x) {
+  // Definition of -x in two's complement representation
   return ~x + 1;
 }
 
@@ -249,7 +259,8 @@ int func10(int x) {
  *   Rating: 3
  */
 int func11(int x, int y) {
-  // return !(((x & y) | (x ^ y) & ~(x + y)) >> 31);
+  // Check wether x and y have same sign bit and wether x + y has a different sign bit.
+  // Do calculations in the sign bit then right shift by 31 bits to bring it back 
   return !((~(x ^ y) & ((x + y) ^ x)) >> 31);
 }
 
@@ -261,6 +272,8 @@ int func11(int x, int y) {
  *   Rating: 3
  */
 int func12(int x) {
+  // Use the fact that x >> 31 depends only of the sign bit and is 0 if x >= 0
+  // Do an extra check for 0
   return !(!x + (x >> 31));
 }
 
@@ -275,6 +288,7 @@ int func12(int x) {
  *   Rating: 4
  */
 int func13(int x, int y) {
+  // Use same method as func11 to calculate overflow, then use it as a mask to choose between the (max/min)int or the sum
   int s = x + y;
   int overflow = (~(x ^ y) & ((x + y) ^ x)) >> 31;
   return (overflow & (~(x >> 31) ^ (1 << 31))) + (~overflow & s);
