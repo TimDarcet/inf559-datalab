@@ -236,11 +236,7 @@ int func9(int x) {
  *   Rating: 2
  */
 int func10(int x) {
-
-
-
-  return 2;
-
+  return ~x + 1;
 }
 
 /* 
