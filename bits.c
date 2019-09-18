@@ -158,13 +158,7 @@ int func3(int n) {
  *   Rating: 2
  */
 int func4(int x) {
-
-
-
-
-
-  return 2;
-
+  return (x & 1) << 31 >> 31;
 }
 
 /* 
